@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-//var useragent = require('express-useragent');
+var useragent = require('express-useragent');
 
 var UAParser = require('ua-parser-js');
 var parser = new UAParser();
@@ -30,7 +30,7 @@ app.get('/',function(req,res){
                    "software": software    
                   }
         //var software = parser.setUA(ua).getResult()
-    res.send(ans);
+    res.send([ans, req.headers, req.useragent ]);
        
         });
 

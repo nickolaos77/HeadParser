@@ -25,7 +25,7 @@ app.get('/',function(req,res){
         var browser = parser.setUA(ua).getBrowser().name;
         if (typeof(vendor) === 'string') {var software =  vendor + ' ' +architecture + ' ' + os + ' '+ browser  }
         else { var software = architecture + ' ' + os + ' '+ browser }
-        var ans = {"ipaddress" : req.ip,
+        var ans = {"ipaddress" : req.connection.remoteAddress,
                    "language"  : language,
                    "software": software    
                   }

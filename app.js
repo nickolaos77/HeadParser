@@ -20,7 +20,7 @@ app.get('/',function(req,res){
                    "language"  : language,
                    "software": software    
                   }
-        
+        console.log(ans);
         res.send(ans);
        
         });
@@ -28,4 +28,5 @@ app.get('/',function(req,res){
 
 app.listen(PORT, function(){
     console.log('Express listening on port '+ PORT + '!');
+    
 });

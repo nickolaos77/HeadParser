@@ -17,7 +17,7 @@ var PORT = process.env.PORT || 3000;
 app.get('/',function(req,res){
        var ua = req.headers['user-agent'];      
        
-        var ipaddress = req.ip;       
+        var ip = req.headers["x-forwarded-for"];       
         var language = req.headers["accept-language"].slice(0,5);
         var vendor = parser.setUA(ua).getDevice().vendor;
         var architecture = parser.setUA(ua).getCPU().architecture;
@@ -25,12 +25,12 @@ app.get('/',function(req,res){
         var browser = parser.setUA(ua).getBrowser().name;
         if (typeof(vendor) === 'string') {var software =  vendor + ' ' +architecture + ' ' + os + ' '+ browser  }
         else { var software = architecture + ' ' + os + ' '+ browser }
-        var ans = {"ipaddress" : req.connection.remoteAddress,
+        var ans = {"ipaddress" : ip,
                    "language"  : language,
                    "software": software    
                   }
         //var software = parser.setUA(ua).getResult()
-    res.send([ans, req.headers, req.useragent ]);
+    res.send([ans, req.headers, ]);
        
         });
 

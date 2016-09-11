@@ -1,18 +1,9 @@
 var express = require('express');
 var app = express();
-var useragent = require('express-useragent');
-
 var UAParser = require('ua-parser-js');
 var parser = new UAParser();
 
 var PORT = process.env.PORT || 3000;
-
-//app.use(useragent.express());
-//app.get('/', function(req, res){
-//    res.send([req.useragent, req.headers]);
-//});
-
-
 
 app.get('/',function(req,res){
        var ua = req.headers['user-agent'];      
@@ -29,8 +20,8 @@ app.get('/',function(req,res){
                    "language"  : language,
                    "software": software    
                   }
-        //var software = parser.setUA(ua).getResult()
-    res.send([ans, req.headers, ]);
+        
+        res.send(ans);
        
         });
 

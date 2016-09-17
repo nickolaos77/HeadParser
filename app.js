@@ -5,7 +5,7 @@ var parser = new UAParser();
 
 var PORT = process.env.PORT || 3000;
 
-app.get('/',function(req,res){
+app.get('/headparser',function(req,res){
        var ua = req.headers['user-agent'];      
        
         var ip = req.headers["x-forwarded-for"];       
